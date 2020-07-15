@@ -12,143 +12,143 @@ id;name;type;effect;precision;value;category
 11;gyro ball;steel;inflict_dmg;75;70;phy
 12;ailes d'acier;steel;inflict_dmg;65;85;phy
 13;aegis maxima;steel;inflict_dmg;50;100;phy
-14;flash canon;steel;inflict_dmg_sp;100;50;spe
-15;métalaser;steel;inflict_dmg_sp;75;70;spe
-16;luminocanon;steel;inflict_dmg_sp;65;85;spe
-17;vœu destructeur;steel;inflict_dmg_sp;50;100;spe
+14;flash canon;steel;inflict_dmg;100;50;spe
+15;métalaser;steel;inflict_dmg;75;70;spe
+16;luminocanon;steel;inflict_dmg;65;85;spe
+17;vœu destructeur;steel;inflict_dmg;50;100;spe
 18;roue de feu;fire;inflict_dmg;100;50;phy
 19;poing feu;fire;inflict_dmg;75;70;phy
 20;boutefeu;fire;inflict_dmg;65;85;phy
 21;pyromax;fire;inflict_dmg;50;100;phy
-22;flamèche;fire;inflict_dmg_sp;100;50;spe
-23;lance-flammes;fire;inflict_dmg_sp;75;70;spe
-24;deflagration;fire;inflict_dmg_sp;65;85;spe
-25;éruption;fire;inflict_dmg_sp;50;100;spe
+22;flamèche;fire;inflict_dmg;100;50;spe
+23;lance-flammes;fire;inflict_dmg;75;70;spe
+24;deflagration;fire;inflict_dmg;65;85;spe
+25;éruption;fire;inflict_dmg;50;100;spe
 26;balle graine;grass;inflict_dmg;100;50;phy
 27;tranch'herbe ;grass;inflict_dmg;75;70;phy
 28;lame feuille;grass;inflict_dmg;65;85;phy
 29;mégafouet;grass;inflict_dmg;50;100;phy
-30;feuille magik;grass;inflict_dmg_sp;100;50;spe
-31;éco-sphère;grass;inflict_dmg_sp;75;70;spe
-32;tempête verte;grass;inflict_dmg_sp;65;85;spe
-33;fulmigraine;grass;inflict_dmg_sp;50;100;spe
+30;feuille magik;grass;inflict_dmg;100;50;spe
+31;éco-sphère;grass;inflict_dmg;75;70;spe
+32;tempête verte;grass;inflict_dmg;65;85;spe
+33;fulmigraine;grass;inflict_dmg;50;100;spe
 34;aqua-jet ;water;inflict_dmg;100;50;phy
 35;cascade;water;inflict_dmg;75;70;phy
 36;hydro-queue;water;inflict_dmg;65;85;phy
 37;pince-masse;water;inflict_dmg;50;100;phy
-38;bulles d'o;water;inflict_dmg_sp;100;50;spe
-39;surf;water;inflict_dmg_sp;75;70;spe
-40;hydrocanon;water;inflict_dmg_sp;65;85;spe
-41;hydroblast;water;inflict_dmg_sp;50;100;spe
+38;bulles d'o;water;inflict_dmg;100;50;spe
+39;surf;water;inflict_dmg;75;70;spe
+40;hydrocanon;water;inflict_dmg;65;85;spe
+41;hydroblast;water;inflict_dmg;50;100;spe
 42;taillade;bug;inflict_dmg;100;50;phy
 43;demi-tour;bug;inflict_dmg;75;70;phy
 44;escarmouche;bug;inflict_dmg;65;85;phy
 45;mégacorne;bug;inflict_dmg;50;100;phy
-46;survinsecte;bug;inflict_dmg_sp;100;50;spe
-47;vent argenté;bug;inflict_dmg_sp;75;70;spe
-48;rayon signal;bug;inflict_dmg_sp;65;85;spe
-49;bourdon;bug;inflict_dmg_sp;50;100;spe
+46;survinsecte;bug;inflict_dmg;100;50;spe
+47;vent argenté;bug;inflict_dmg;75;70;spe
+48;rayon signal;bug;inflict_dmg;65;85;spe
+49;bourdon;bug;inflict_dmg;50;100;spe
 50;poursuite;dark;inflict_dmg;100;50;phy
 51;morsure;dark;inflict_dmg;75;70;phy
 52;mâchouille;dark;inflict_dmg;65;85;phy
 53;tricherie;dark;inflict_dmg;50;100;phy
-54;aboiement;dark;inflict_dmg_sp;100;50;spe
-55;évo-ténébro;dark;inflict_dmg_sp;75;70;spe
-56;vibroscur;dark;inflict_dmg_sp;65;85;spe
-57;explonuit;dark;inflict_dmg_sp;50;100;spe
+54;aboiement;dark;inflict_dmg;100;50;spe
+55;évo-ténébro;dark;inflict_dmg;75;70;spe
+56;vibroscur;dark;inflict_dmg;65;85;spe
+57;explonuit;dark;inflict_dmg;50;100;spe
 58;anti-air;rock;inflict_dmg;100;50;phy
 59;tomberoche;rock;inflict_dmg;75;70;phy
 60;éboulement;rock;inflict_dmg;65;85;phy
 61;lame de roc;rock;inflict_dmg;50;100;phy
-62;pouvoir antique;rock;inflict_dmg_sp;100;50;spe
-63;jet-pierres;rock;inflict_dmg_sp;75;70;spe
-64;rayon gemme;rock;inflict_dmg_sp;65;85;spe
-65;apocalypse gigalithique;rock;inflict_dmg_sp;50;100;spe
+62;pouvoir antique;rock;inflict_dmg;100;50;spe
+63;jet-pierres;rock;inflict_dmg;75;70;spe
+64;rayon gemme;rock;inflict_dmg;65;85;spe
+65;apocalypse gigalithique;rock;inflict_dmg;50;100;spe
 66;draco-flèches;dragon;inflict_dmg;100;50;phy
 67;draco-queue;dragon;inflict_dmg;75;70;phy
 68;draco-griffe;dragon;inflict_dmg;65;85;phy
 69;colère;dragon;inflict_dmg;50;100;phy
-70;ouragan;dragon;inflict_dmg_sp;100;50;spe
-71;draco-souffle;dragon;inflict_dmg_sp;75;70;spe
-72;draco-choc;dragon;inflict_dmg_sp;65;85;spe
-73;draco-météore;dragon;inflict_dmg_sp;50;100;spe
+70;ouragan;dragon;inflict_dmg;100;50;spe
+71;draco-souffle;dragon;inflict_dmg;75;70;spe
+72;draco-choc;dragon;inflict_dmg;65;85;spe
+73;draco-météore;dragon;inflict_dmg;50;100;spe
 74;choc émotionnel;fairy;inflict_dmg;100;50;phy
 75;câlinerie;fairy;inflict_dmg;75;70;phy
 76;enchantomax;fairy;inflict_dmg;65;85;phy
 77;patati-patattrape;fairy;inflict_dmg;50;100;phy
-78;vent féérique;fairy;inflict_dmg_sp;100;50;spe
-79;éclat magique;fairy;inflict_dmg_sp;75;70;spe
-80;vapeur féérique;fairy;inflict_dmg_sp;65;85;spe
-81;lumière du néant;fairy;inflict_dmg_sp;50;100;spe
+78;vent féérique;fairy;inflict_dmg;100;50;spe
+79;éclat magique;fairy;inflict_dmg;75;70;spe
+80;vapeur féérique;fairy;inflict_dmg;65;85;spe
+81;lumière du néant;fairy;inflict_dmg;50;100;spe
 82;poing karaté;fighting;inflict_dmg;100;50;phy
 83;mawashi geri;fighting;inflict_dmg;75;70;phy
 84;coup croix;fighting;inflict_dmg;65;85;phy
 85;close combat;fighting;inflict_dmg;50;100;phy
-86;onde vide;fighting;inflict_dmg_sp;100;50;spe
-87;aurasphère;fighting;inflict_dmg_sp;75;70;spe
-88;lame ointe;fighting;inflict_dmg_sp;65;85;spe
-89;exploforce;fighting;inflict_dmg_sp;50;100;spe
+86;onde vide;fighting;inflict_dmg;100;50;spe
+87;aurasphère;fighting;inflict_dmg;75;70;spe
+88;lame ointe;fighting;inflict_dmg;65;85;spe
+89;exploforce;fighting;inflict_dmg;50;100;spe
 90;acrobatie;flying;inflict_dmg;100;50;phy
 91;aéropique;flying;inflict_dmg;75;70;phy
 92;bec vrille;flying;inflict_dmg;65;85;phy
 93;rapace;flying;inflict_dmg;50;100;phy
-94;tornade;flying;inflict_dmg_sp;100;50;spe
-95;tranch'air;flying;inflict_dmg_sp;75;70;spe
-96;lame d'air;flying;inflict_dmg_sp;65;85;spe
-97;aéroblast;flying;inflict_dmg_sp;50;100;spe
+94;tornade;flying;inflict_dmg;100;50;spe
+95;tranch'air;flying;inflict_dmg;75;70;spe
+96;lame d'air;flying;inflict_dmg;65;85;spe
+97;aéroblast;flying;inflict_dmg;50;100;spe
 98;crocs éclair;electric;inflict_dmg;100;50;phy
 99;poing éclair;electric;inflict_dmg;75;70;phy
 100;éclair fou;electric;inflict_dmg;65;85;phy
 101;électacle;electric;inflict_dmg;50;100;phy
-102;éclair;electric;inflict_dmg_sp;100;50;spe
-103;onde de choc;electric;inflict_dmg_sp;75;70;spe
-104;tonnerre;electric;inflict_dmg_sp;65;85;spe
-105;fatal-foudre;electric;inflict_dmg_sp;50;100;spe
+102;éclair;electric;inflict_dmg;100;50;spe
+103;onde de choc;electric;inflict_dmg;75;70;spe
+104;tonnerre;electric;inflict_dmg;65;85;spe
+105;fatal-foudre;electric;inflict_dmg;50;100;spe
 106;charge;normal;inflict_dmg;100;50;phy
 107;tranche;normal;inflict_dmg;75;70;phy
 108;plaquage;normal;inflict_dmg;65;85;phy
 109;damoclès;normal;inflict_dmg;50;100;phy
-110;ronflement;normal;inflict_dmg_sp;100;50;spe
-111;météores;normal;inflict_dmg_sp;75;70;spe
-112;triplattaque;normal;inflict_dmg_sp;65;85;spe
-113;ultralaser;normal;inflict_dmg_sp;50;100;spe
+110;ronflement;normal;inflict_dmg;100;50;spe
+111;météores;normal;inflict_dmg;75;70;spe
+112;triplattaque;normal;inflict_dmg;65;85;spe
+113;ultralaser;normal;inflict_dmg;50;100;spe
 114;ombre portée;ghost;inflict_dmg;100;50;phy
 115;griffe ombre;ghost;inflict_dmg;75;70;phy
 116;hantise;ghost;inflict_dmg;65;85;phy
 117;revenant;ghost;inflict_dmg;50;100;phy
-118;vent mauvais;ghost;inflict_dmg_sp;100;50;spe
-119;châtiment;ghost;inflict_dmg_sp;75;70;spe
-120;ball'ombre;ghost;inflict_dmg_sp;65;85;spe
-121;rayon spectral;ghost;inflict_dmg_sp;50;100;spe
+118;vent mauvais;ghost;inflict_dmg;100;50;spe
+119;châtiment;ghost;inflict_dmg;75;70;spe
+120;ball'ombre;ghost;inflict_dmg;65;85;spe
+121;rayon spectral;ghost;inflict_dmg;50;100;spe
 122;osmerang;ground;inflict_dmg;100;50;phy
 123;piétisol;ground;inflict_dmg;75;70;phy
 124;tunnel;ground;inflict_dmg;65;85;phy
 125;séisme;ground;inflict_dmg;50;100;phy
-126;coud'boue;ground;inflict_dmg_sp;100;50;spe
-127;tir de boue;ground;inflict_dmg_sp;75;70;spe
-128;boue-bombe;ground;inflict_dmg_sp;65;85;spe
-129;telluriforce;ground;inflict_dmg_sp;50;100;spe
+126;coud'boue;ground;inflict_dmg;100;50;spe
+127;tir de boue;ground;inflict_dmg;75;70;spe
+128;boue-bombe;ground;inflict_dmg;65;85;spe
+129;telluriforce;ground;inflict_dmg;50;100;spe
 130;ball'glace;ice;inflict_dmg;100;50;phy
 131;éclats glace;ice;inflict_dmg;75;70;phy
 132;poing glace;ice;inflict_dmg;65;85;phy
 133;éclair gelé;ice;inflict_dmg;50;100;phy
-134;vent glace;ice;inflict_dmg_sp;100;50;spe
-135;onde boréale;ice;inflict_dmg_sp;75;70;spe
-136;laser glace;ice;inflict_dmg_sp;65;85;spe
-137;blizzard;ice;inflict_dmg_sp;50;100;spe
+134;vent glace;ice;inflict_dmg;100;50;spe
+135;onde boréale;ice;inflict_dmg;75;70;spe
+136;laser glace;ice;inflict_dmg;65;85;spe
+137;blizzard;ice;inflict_dmg;50;100;spe
 138;crève-cœur;psychic;inflict_dmg;100;50;phy
 139;coupe psycho;psychic;inflict_dmg;75;70;phy
 140;psykoud'boul;psychic;inflict_dmg;65;85;phy
 141;psycho-croc;psychic;inflict_dmg;50;100;phy
-142;choc mental;psychic;inflict_dmg_sp;100;50;spe
-143;ball'brume;psychic;inflict_dmg_sp;75;70;spe
-144;extrasenseur;psychic;inflict_dmg_sp;65;85;spe
-145;psyko;psychic;inflict_dmg_sp;50;100;spe
+142;choc mental;psychic;inflict_dmg;100;50;spe
+143;ball'brume;psychic;inflict_dmg;75;70;spe
+144;extrasenseur;psychic;inflict_dmg;65;85;spe
+145;psyko;psychic;inflict_dmg;50;100;spe
 146;queue-poison;poison;inflict_dmg;100;50;phy
 147;poison croix;poison;inflict_dmg;75;70;phy
 148;direct toxic;poison;inflict_dmg;65;85;phy
 149;détricanon;poison;inflict_dmg;50;100;phy
-150;acide;poison;inflict_dmg_sp;100;50;spe
-151;détritus;poison;inflict_dmg_sp;75;70;spe
-152;bombe beurk;poison;inflict_dmg_sp;65;85;spe
-153;éructation;poison;inflict_dmg_sp;50;100;spe
+150;acide;poison;inflict_dmg;100;50;spe
+151;détritus;poison;inflict_dmg;75;70;spe
+152;bombe beurk;poison;inflict_dmg;65;85;spe
+153;éructation;poison;inflict_dmg;50;100;spe

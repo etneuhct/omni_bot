@@ -34,7 +34,7 @@ class Pokemon:
         init_stat = {stat: int(stats[stat]) for stat in stats}
         self.stats = {**init_stat}
         self.initial_stat = {**init_stat}
-        self.type1, self.type2 = type1, type2
+        self.type1, self.type2 = type1.strip(), type2.strip()
 
     def act(self, action_id, opponent):
         action = self.actions[action_id]
@@ -101,13 +101,12 @@ class Pokemon:
         else:
             att = self.stats[PokemonStat.ATTSPE]
             defense = self.stats[PokemonStat.DEFSPE]
-        CM = 1
-        if action.type == self.type2 or action.type == self.type1:
-            CM += 0.2
-        CM = CM * self.get_stab(action.type)
+        CM = opponent.get_stab(action.type)
         received_damage = (((self.level * att * action.value) / (defense * 50)) + 2) * CM
         opponent.decrease_pv(received_damage)
-        message = "{}. {} subit {} dommages".format(message, opponent.name, received_damage)
+        message = "{}. {} subit {} dommages.".format(message, opponent.name, received_damage)
+        if opponent.stats[PokemonStat.PV] <= 0:
+            message = message + "\n{} est K.O.".format(opponent.name)
         return message
 
     def heal(self, value):
@@ -254,3 +253,4 @@ p = sorted(pktype.replace(' ', '').lower().split(','))
 for i in p:
     for j in p:
         print("{};{}".format(i, j))"""
+

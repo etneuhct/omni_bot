@@ -39,7 +39,7 @@ def get_data():
         reader = csv.DictReader(f, delimiter=';')
         for row in reader:
             data = dict(row)
-            name = "".join(sorted([data['att'], data['def']]))
+            name = "".join([data['att'], data['def']])
             table_type[name] = float(data['coefficient'])
 
     return pokemon, table_type
