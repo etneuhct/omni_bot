@@ -1,7 +1,8 @@
 from discord.ext import commands, tasks
 from discord.ext.commands import has_permissions, CheckFailure
-from tools.delete_message.dialogs import *
-from omni_bot.omni_bot import OmniBot
+
+from bot.omni_bot import OmniBot
+from message_controller.dialogs import *
 
 
 class CommandDeleteMessage(commands.Cog, name='Messages supprimés'):

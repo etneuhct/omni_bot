@@ -1,5 +1,5 @@
 import os
-import settings
+import custom_settings
 
 
 def message_transformation(message: str):
@@ -16,9 +16,9 @@ def message_transformation(message: str):
 
 
 def get_dictionary_word(minimum: int, maximum: int, lang: str):
-    dict_path = os.path.join(settings.INPUT_PATH, "dictionaries/dict_{}.txt".format(lang))
+    dict_path = os.path.join(custom_settings.INPUT_PATH, "dictionaries/dict_{}.txt".format(lang))
     if not os.path.exists(dict_path):
-        dict_path = os.path.join(settings.INPUT_PATH, "dictionaries/dict_{}.txt".format('fr'))
+        dict_path = os.path.join(custom_settings.INPUT_PATH, "dictionaries/dict_{}.txt".format('fr'))
     with open(dict_path, "r") as dictionary:
         dictionary = [word.lower() for word in dictionary.read().split("\n") if minimum < len(word) < maximum]
     return dictionary

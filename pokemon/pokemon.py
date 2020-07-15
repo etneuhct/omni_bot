@@ -1,6 +1,6 @@
-from games.pokemon.space import *
-from games.pokemon.db import get_data
 import random
+from pokemon.db import get_data
+from pokemon.space import *
 
 db = get_data()
 pkmns = db[0]

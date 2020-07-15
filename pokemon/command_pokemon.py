@@ -1,7 +1,8 @@
 import discord
 from discord.ext import commands
-from games.pokemon.pokemon import *
-from omni_bot.omni_bot import OmniBot
+from bot.omni_bot import OmniBot
+from pokemon.pokemon import *
+from pokemon.space import *
 
 atts = [ActionNames.ATT1, ActionNames.ATT2, ActionNames.ATT3, ActionNames.ATT4]
 input_to_action = {str(atts.index(att) + 1): att for att in atts}

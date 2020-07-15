@@ -1,5 +1,5 @@
 from discord.ext import commands
-from games.pendu.pendu import Pendu
+from pendu.pendu import Pendu
 from utils import help, dialogs
 
 

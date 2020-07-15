@@ -1,9 +1,9 @@
-import settings
+import custom_settings
 import os
 import csv
 
 def get_data():
-    folder = os.path.join(settings.INPUT_PATH, 'pokemon')
+    folder = os.path.join(custom_settings.INPUT_PATH, 'pokemon')
     pokemon_file = os.path.join(folder, 'pokemon.csv')
     pokemon_att_file = os.path.join(folder, 'pokemonAtt.csv')
     type_table_file = os.path.join(folder, 'type_table.csv')
