@@ -4,12 +4,12 @@ class PokemonType:
 
 class PokemonStat:
     SPEED = 'speed'
-    PV = 'pv'
-    ATT, DEF, ATTSPE, DEFSPE = 'att', 'def', 'att_spe', 'def_spe'
+    PV = 'hp'
+    ATT, DEF, ATTSPE, DEFSPE = 'attack', 'defense', 'special_attack', 'special_defense'
 
 
 class ActionNames:
-    ATT1, ATT2, ATT3, ATT4 = ['att{}'.format(i) for i in range(1, 5)]
+    ATT1, ATT2, ATT3, ATT4 = ['capacity{}'.format(i) for i in range(1, 5)]
 
 
 class ActionEffect:
@@ -23,7 +23,7 @@ class ActionEffect:
 
 
 class ActionCategory:
-    SPECIAL, PHYSIC = 'spe', 'physic'
+    SPECIAL, PHYSIC = 'special', 'physical'
 
 
 class MatchStatus:
