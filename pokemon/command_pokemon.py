@@ -75,7 +75,7 @@ class CommandPokemon(commands.Cog, name='Pokemon'):
         if len(participants) == 2:
             keys = list(participants.keys())
             await ctx.channel.send(PokemonDialog.ENOUGHPARTICIPANT.format(participants[keys[0]].name,
-                                                                          participants[keys[0]].name))
+                                                                          participants[keys[1]].name))
             match = Match(player1=participants[keys[0]], player2=participants[keys[1]])
             match.start()
             guild['match'] = match
@@ -110,15 +110,15 @@ class CommandPokemon(commands.Cog, name='Pokemon'):
         player_2 = players[keys[1]] if len(keys) == 2 else None
         pokemon_2 = player_2.get_active_pokemon() if player_2 else None
 
-        embed.add_field(name="Joueur", value=player_1.name, inline=player_2 is not None)
+        embed.add_field(name="Joueur", value=player_1.name, inline=False)
         if pokemon_2:
-            embed.add_field(name="Joueur", value=player_2.name, inline=False)
+            embed.add_field(name="Joueur", value=player_2.name, inline=True)
         embed.add_field(name="Pokemon", value="{}\n{}".format(pokemon_1.name,
-                                                              get_pokemon_type(pokemon_1)), inline=player_2 is not None)
+                                                              get_pokemon_type(pokemon_1)), inline=False)
         if pokemon_2:
             embed.add_field(name="Pokemon", value="{}\n{}".format(pokemon_2.name,
                                                                   get_pokemon_type(pokemon_2)),
-                            inline=False)
+                            inline=True)
         await ctx.channel.send(embed=embed)
 
     @commands.command(name="pokemon_f", help=PokemonDialog.HELPFIGHT)
@@ -135,7 +135,7 @@ class CommandPokemon(commands.Cog, name='Pokemon'):
                 match: Match = guild['match']
                 p1_action = guild['actions'][match.player1.user_id]
                 p2_action = guild['actions'][match.player2.user_id]
-                result = match.fight(p1_action, p2_action)
+                result = await sync_to_async(match.fight)(p1_action, p2_action)
                 await ctx.channel.send('Fight !')
                 await ctx.channel.send(result)
                 guild['actions'] = {}
