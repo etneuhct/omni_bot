@@ -1,29 +1,12 @@
 from asgiref.sync import sync_to_async
-import custom_settings
 import discord
 from discord.ext import commands
 from bot.omni_bot import OmniBot
-from pokemon.pokemond.main import PokemonObj, Pokedex, Player, Match
-from pokemon.pokemond.names import *
+from pokemon.pokemon_main import PokemonObj, Pokedex, Player, Match
+from pokemon.names import *
 
 atts = [ActionNames.ATT1, ActionNames.ATT2, ActionNames.ATT3, ActionNames.ATT4]
 input_to_action = {str(atts.index(att) + 1): att for att in atts}
-
-
-class PokemonDialog:
-    HELPACTIVEPOKEMON = "Liste des pokemon actifs"
-    HELPPLAYERINFO = "Info sur les joueurs"
-    HELPPOKEMONINFO = "Info sur les pokemon dispo"
-    ACTIONREGISTER = 'Enregistrement complété avec succès'
-    HELPFIGHT = "Utilise un chiffre compris entre 1 et 4 pour choisir l'attaque a executer"
-    GLOBALATTAKERROR = 'Impossible !'
-    STARTMATCH = 'Let the game begin !'
-    SUBSCRIPTIONRECORDED = 'Enregistrement complété avec succès'
-    HELPGAMESUBSCRIPTION = 'Inscris toi en renseignant les pokemon que tu veux utiliser'
-    ENOUGHPARTICIPANT = 'Participants:\nJoueur 1: {}\nJoueur 2: {}'
-    NOTENOUGHPARTICIPANT = "2 participants doivent se battre"
-    GLOBALINFO = "Jouons à pokemon !"
-    CREATEMATCHMESSAGE = "R.A.S"
 
 
 class CommandPokemon(commands.Cog, name='Pokemon'):
@@ -39,23 +22,37 @@ class CommandPokemon(commands.Cog, name='Pokemon'):
         await channel.send(message)
 
     @commands.command(name='pokemon_whois', help=PokemonDialog.HELPPOKEMONINFO)
-    async def pokemon_info(self, ctx, pokemon: str):
-
-        try:
-            pokedex = await sync_to_async(Pokedex)()
-            pokemon = await sync_to_async(pokedex.get_pokemon)(pokemon)
-            pokemonObj: PokemonObj = pokemon
-            pokemon_type = get_pokemon_type(pokemonObj)
-            pokemon_attacks = get_pokemon_attack(pokemonObj)
-            message = discord.Embed(title=pokemonObj.name, type='rich')
-            message.add_field(name="Type", inline=False, value=pokemon_type)
-            message.add_field(name="Attaques", value=pokemon_attacks)
-            message.add_field(name="Stats", value=get_pokemon_stats(pokemonObj))
-            if pokemonObj.picture_url:
-                message.set_thumbnail(url=pokemonObj.picture_url)
-            await ctx.channel.send(embed=message)
-        except KeyError:
-            await ctx.channel.send("Ce pokemon n'existe pas !")
+    async def pokemon_info(self, ctx, pokemon: str = None):
+        pokedex = await sync_to_async(Pokedex)()
+        if not pokemon:
+            obj = pokedex.all_pokemon
+            messages = []
+            message = []
+            for key in list(obj.keys()):
+                message.append(key)
+                if len(", ".join(message)) > 1950:
+                    messages.append(message)
+                    message = []
+                elif list(obj.keys()).index(key) == len(list(obj.keys())) - 1:
+                    messages.append(message)
+            await ctx.channel.send("Liste des pokemon disponibles")
+            for i in messages:
+                await ctx.channel.send(", ".join(i))
+        else:
+            try:
+                pokemon = await sync_to_async(pokedex.get_pokemon)(pokemon)
+                pokemonObj: PokemonObj = pokemon
+                pokemon_type = get_pokemon_type(pokemonObj)
+                pokemon_attacks = get_pokemon_attack(pokemonObj)
+                message = discord.Embed(title=pokemonObj.name, type='rich')
+                message.add_field(name="Type", inline=False, value=pokemon_type)
+                message.add_field(name="Attaques", value=pokemon_attacks)
+                message.add_field(name="Stats", value=get_pokemon_stats(pokemonObj))
+                if pokemonObj.picture_url:
+                    message.set_thumbnail(url=pokemonObj.picture_url)
+                await ctx.channel.send(embed=message)
+            except KeyError:
+                await ctx.channel.send("Ce pokemon n'existe pas !")
 
     @commands.command(name="pokemon_s", help=PokemonDialog.HELPGAMESUBSCRIPTION)
     async def game_subscription(self, ctx, pokemon: str):
@@ -66,9 +63,14 @@ class CommandPokemon(commands.Cog, name='Pokemon'):
         pokemon_ids = pokemon.strip().split(',')
         if len(participants) < 2:
             pokedex = await sync_to_async(Pokedex)()
-            player_pokemon = [
-                await sync_to_async(pokedex.get_pokemon)(pokemon_id) for pokemon_id in pokemon_ids
-            ]
+            player_pokemon = []
+            for pokemon_id in pokemon_ids:
+                pkmn = await sync_to_async(pokedex.get_pokemon)(pokemon_id)
+                if pkmn:
+                    player_pokemon.append(pkmn)
+                else:
+                    await ctx.channel.send("{} n'existe pas. Peut-être devrais-tu vérifier la liste de pokemon disponibles.".format(pokemon_id))
+                    return
             player = Player(ctx.message.author.id, ctx.message.author.name, player_pokemon)
             participants[ctx.message.author.id] = player
             await ctx.channel.send(PokemonDialog.SUBSCRIPTIONRECORDED)
@@ -81,7 +83,7 @@ class CommandPokemon(commands.Cog, name='Pokemon'):
             guild['match'] = match
             await ctx.channel.send(PokemonDialog.STARTMATCH)
 
-    @commands.command(name='pokemon_whoiam', help='Nope')
+    @commands.command(name='pokemon_whoiam', help=PokemonDialog.WHOIAM)
     async def get_user_info(self, ctx):
         try:
             player: Player = self.bot.storage['pokemon'][ctx.guild.id]['participants'][ctx.message.author.id]
@@ -97,7 +99,7 @@ class CommandPokemon(commands.Cog, name='Pokemon'):
             embed.add_field(name='Stats', value=pokemon_stats, inline=True)
         await ctx.channel.send(embed=embed)
 
-    @commands.command(name='pokemon_players', help='Nope')
+    @commands.command(name='pokemon_players', help=PokemonDialog.PLAYERS)
     async def get_players_pokemon(self, ctx):
         players = self.bot.storage['pokemon'][ctx.guild.id]['participants']
         keys = list(players.keys())
@@ -110,12 +112,11 @@ class CommandPokemon(commands.Cog, name='Pokemon'):
         player_2 = players[keys[1]] if len(keys) == 2 else None
         pokemon_2 = player_2.get_active_pokemon() if player_2 else None
 
-        embed.add_field(name="Joueur", value=player_1.name, inline=False)
-        if pokemon_2:
-            embed.add_field(name="Joueur", value=player_2.name, inline=True)
+        embed.add_field(name="Joueur", value=player_1.name, inline=True)
         embed.add_field(name="Pokemon", value="{}\n{}".format(pokemon_1.name,
-                                                              get_pokemon_type(pokemon_1)), inline=False)
+                                                              get_pokemon_type(pokemon_1)), inline=True)
         if pokemon_2:
+            embed.add_field(name="Joueur", value=player_2.name, inline=False)
             embed.add_field(name="Pokemon", value="{}\n{}".format(pokemon_2.name,
                                                                   get_pokemon_type(pokemon_2)),
                             inline=True)
@@ -144,61 +145,6 @@ class CommandPokemon(commands.Cog, name='Pokemon'):
                 return
         except KeyError:
             return
-"""
-    @commands.command(name="pkmn_s", help=PokemonDialog.HELPGAMESUBSCRIPTION)
-    async def game_subscription(self, ctx, pokemon: str):
-        guild_id = ctx.guild.id
-        if guild_id not in self.bot.storage['pokemon']:
-            self.bot.storage['pokemon'][guild_id] = {}
-        guild = self.bot.storage['pokemon'][guild_id]
-        if 'participants' not in guild:
-            guild['participants'] = []
-            guild['actions'] = {}
-        pokemon = pokemon.strip().split(',')
-        if len(guild['participants']) < 2 \
-                and ctx.message.author.id not in [player.user_id for player in guild['participants']]:
-            pokemon = [Pokemon(**get_pokemon(pId.strip())) for pId in pokemon]
-            player = Player(ctx.message.author.id, ctx.message.author.name, pokemon)
-            guild['participants'].append(player)
-            await ctx.channel.send(PokemonDialog.SUBSCRIPTIONRECORDED)
-        if len(guild['participants']) == 2:
-            await ctx.channel.send(PokemonDialog.ENOUGHPARTICIPANT.format(guild['participants'][0].name,
-                                                                          guild['participants'][1].name))
-            players = self.bot.storage['pokemon'][guild_id]['participants']
-            match = Match(player1=players[0], player2=players[1])
-            match.start()
-            self.bot.storage['pokemon'][guild_id]['match'] = match
-            await ctx.channel.send(PokemonDialog.STARTMATCH)
-
-    @commands.command(name="pkmn_f", help=PokemonDialog.HELPFIGHT)
-    async def attack(self, ctx, action: str):
-        try:
-            guild_id = ctx.guild.id
-            guild = self.bot.storage['pokemon'][guild_id]
-        except KeyError as e:
-            print(str(e))
-            return
-
-        if get_player_by_id(guild['participants'], ctx.message.author.id) and action in [str(i) for i in
-                                                                                         range(1, 5)]:
-            if 'actions' not in guild:
-                guild['actions'] = {}
-            guild['actions'][ctx.message.author.id] = input_to_action[action]
-            await ctx.channel.send(PokemonDialog.ACTIONREGISTER)
-        if len(guild['actions']) == 2:
-            match: Match = guild['match']
-            p1_action = guild['actions'][match.player1.user_id]
-            p2_action = guild['actions'][match.player2.user_id]
-            result = match.fight(p1_action, p2_action)
-            await ctx.channel.send('Fight !')
-            await ctx.channel.send(result)
-            guild['actions'] = {}
-            if match.status == MatchStatus.FINISHED:
-                self.bot.storage['pokemon'][guild_id] = {}
-            return
-        else:
-            return
-"""
 
 
 def get_or_create(base, key, init_data):
@@ -207,13 +153,6 @@ def get_or_create(base, key, init_data):
     except KeyError:
         base[key] = init_data
         return base[key]
-
-
-def get_player_by_id(players, user_id):
-    for player in players:
-        if player.user_id == user_id:
-            return player
-    return None
 
 
 def get_pokemon_type(pokemon_obj: PokemonObj):

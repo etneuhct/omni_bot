@@ -1,9 +1,9 @@
-import random
 import custom_settings
+import random
 from django.db.models import Q
 from django.forms import model_to_dict
 from pokemon.models import Pokemon, PokemonCapacity, PokemonType, TypeEfficacity
-from pokemon.pokemond.names import PokemonStat, ActionCategory, ActionEffect, MatchStatus
+from pokemon.names import PokemonStat, ActionCategory, MatchStatus
 
 
 class CapacityDex:
