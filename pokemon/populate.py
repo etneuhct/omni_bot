@@ -1,6 +1,8 @@
 import custom_settings
 import requests
 from pokemon.models import Pokemon, PokemonType, PokemonCapacity, DamageEffect, HealEffect, StatEffect
+import random
+
 first_pkmn = 1
 last_pkmn = 300
 first_att = 1
@@ -70,4 +72,14 @@ for i in range(first_att, last_att):
     )
 
 
+pokemon_capacities = PokemonCapacity.objects.all()
+choices = [i for i in range(len(pokemon_capacities))]
+for pokemon in Pokemon.objects.all():
+    random.shuffle(choices)
+    four_random_number = choices[0:4]
+    pokemon.capacity1 = pokemon_capacities[four_random_number[0]]
+    pokemon.capacity2 = pokemon_capacities[four_random_number[1]]
+    pokemon.capacity3 = pokemon_capacities[four_random_number[2]]
+    pokemon.capacity4 = pokemon_capacities[four_random_number[3]]
+    pokemon.save()
 
